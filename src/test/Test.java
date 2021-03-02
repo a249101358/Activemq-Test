@@ -8,5 +8,7 @@ public class Test {
 		List<Integer> list = Arrays.asList(1,2,3,4,5,6,7,7,8,9,10);
 		long num = list.stream().filter( b ->  b > 4 ).count();
 		System.out.println(num);
+		System.out.println(num);
+		System.out.println(num);
 	}
 }
