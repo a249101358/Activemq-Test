@@ -39,16 +39,18 @@ public class JMSConsumer {
             //启动连接
             connection.start();
             //创建session
-            session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
+            session = connection.createSession(false, Session.CLIENT_ACKNOWLEDGE);
             //创建一个连接HelloWorld的消息队列
             destination = session.createQueue("HelloWorld");
             //创建消息消费者
-            messageConsumer = session.createConsumer(destination);
+            messageConsumer = session.createConsumer(destination," id>4 ");
 
             while (true) {
-                TextMessage textMessage = (TextMessage) messageConsumer.receive(100000);
+                TextMessage textMessage = (TextMessage) messageConsumer.receive();
+                
                 if(textMessage != null){
                     System.out.println("收到的消息:" + textMessage.getText());
+                    textMessage.acknowledge();
                 }else {
                     break;
                 }

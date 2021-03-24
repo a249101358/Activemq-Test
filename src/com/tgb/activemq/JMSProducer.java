@@ -79,6 +79,7 @@ public class JMSProducer {
         for (int i = 0; i < JMSProducer.SENDNUM; i++) {
             //创建一条文本消息 
             TextMessage message = session.createTextMessage("ActiveMQ 发送消息" +i);
+            message.setLongProperty("id", i);
             System.out.println("发送消息：Activemq 发送消息" + i);
             //通过消息生产者发出消息 
             messageProducer.send(message);
